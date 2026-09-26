@@ -7,6 +7,6 @@
     --gray: #6e6a63;
     --white: #faf8f3;
 }
-{ 	margin: 0;
+*{ 	margin: 0;
 		box-sizing: border-box;
 	}
