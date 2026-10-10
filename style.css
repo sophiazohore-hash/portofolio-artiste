@@ -435,3 +435,154 @@ a { /* La balise a représente les liens. Par défaut, ils sont bleus et soulign
     font-weight: 400; /* Poids normal (un h2 est en gras par défaut). */
 
 }
+```jsx
+.gallery-grid { /* Le conteneur qui regroupe toutes les œuvres de la galerie. */
+
+    display: grid; /* CSS Grid : les œuvres (enfants directs) se placent dans les cases d'une grille. */
+
+    grid-template-columns:
+        repeat(12, 1fr); /* repeat(12, 1fr) est un raccourci pour écrire 1fr douze fois : on obtient 12 colonnes égales. fr = « fraction » de l'espace disponible. */
+
+    gap: 80px 30px; /* Deux valeurs : 80px d'espace entre les lignes, 30px entre les colonnes. */
+
+}
+
+.artwork { /* Le bloc d'une œuvre (image + informations). */
+
+    position: relative; /* L'élément reste à sa place, mais devient un point de repère pour les éléments positionnés en absolute à l'intérieur. */
+
+}
+
+.artwork-large { /* La grande œuvre. */
+
+    grid-column:
+        1 / span 7; /* Commence à la ligne de grille n°1 et occupe 7 colonnes (donc les colonnes 1 à 7). */
+
+}
+
+.artwork-small { /* La petite œuvre. */
+
+    grid-column:
+        9 / span 4; /* Commence à la ligne n°9 et occupe 4 colonnes. Elle est donc placée à droite, avec un vide entre elle et la grande œuvre. */
+
+    margin-top: 150px; /* Décale l'œuvre de 150 pixels vers le bas, pour accentuer l'effet décalé « façon magazine ». */
+
+}
+
+.artwork-wide { /* L'œuvre large. */
+
+    grid-column:
+        3 / span 8; /* Commence à la ligne n°3 et occupe 8 colonnes : elle est centrée, avec 2 colonnes vides de chaque côté. */
+
+}
+
+.image-container { /* Le cadre qui contient l'image de l'œuvre. */
+
+    position: relative; /* Point de repère pour placer le numéro rond en absolute à l'intérieur. */
+
+    overflow: hidden; /* Cache tout ce qui dépasse du cadre. Indispensable pour l'effet de zoom : l'image grossit, mais ne déborde pas. */
+
+    background: #ddd; /* Gris clair, visible tant que l'image n'est pas chargée. */
+
+}
+
+.image-container img { /* L'image située dans le cadre. */
+
+    width: 100%; /* L'image prend toute la largeur de son cadre. */
+
+    height: 620px; /* Hauteur par défaut : 620 pixels. */
+
+    object-fit: cover; /* L'image remplit la zone sans se déformer : elle est recadrée si nécessaire. */
+
+    display: block; /* Supprime le petit espace parasite sous l'image. */
+
+    transition:
+        transform 0.6s ease, /* Anime les changements de transform (le zoom) sur 0,6 seconde. */
+        filter 0.6s ease; /* Anime aussi les changements de filter (effets comme le noir et blanc ou le flou), sur 0,6 seconde. On sépare plusieurs transitions par une virgule. */
+
+}
+
+.artwork-small .image-container img { /* Plus précis : seulement l'image du cadre qui est dans .artwork-small. */
+
+    height: 500px; /* Remplace les 620px pour la petite œuvre. Le sélecteur le plus précis l'emporte. */
+
+}
+
+.artwork-wide .image-container img { /* Seulement l'image du cadre qui est dans .artwork-wide. */
+
+    height: 600px; /* Remplace les 620px pour l'œuvre large. */
+
+}
+
+.artwork:hover img { /* :hover = quand la souris passe sur l'élément. Ici, quand on survole l'œuvre (et pas seulement l'image), c'est l'image qui change. */
+
+    transform: scale(1.04); /* transform modifie la forme ou la taille sans toucher à la mise en page. scale(1.04) agrandit l'image de 4 %. Grâce à la transition, le zoom est fluide. */
+
+}
+
+.artwork-number { /* Le petit numéro rond posé sur l'image. */
+
+    position: absolute; /* Placé librement par rapport à son parent positionné (le cadre de l'image). */
+
+    top: 20px; /* À 20 pixels du haut. */
+
+    right: 20px; /* À 20 pixels de la droite. */
+
+    width: 45px; /* Largeur de 45 pixels. */
+
+    height: 45px; /* Hauteur de 45 pixels : même valeur que la largeur, donc un carré. */
+
+    border-radius: 50%; /* Arrondit les coins. À 50 %, le carré devient un cercle parfait. */
+
+    background: var(--cream); /* Fond crème (variable définie dans :root). */
+
+    display: flex; /* Flexbox, pour centrer le chiffre dans le cercle. */
+
+    align-items: center; /* Centre le chiffre verticalement. */
+
+    justify-content: center; /* Centre le chiffre horizontalement. */
+
+    font-size: 12px; /* Petit texte. */
+
+}
+
+.artwork-info { /* Le bloc d'informations sous l'image (titre, description, détail). */
+
+    display: flex; /* Aligne les éléments côte à côte. */
+
+    justify-content: space-between; /* Un élément à gauche, un autre à droite. */
+
+    align-items: flex-start; /* Aligne les éléments en haut (au lieu de les centrer verticalement). */
+
+    padding-top: 15px; /* 15 pixels d'espace intérieur au-dessus du contenu. */
+
+    border-top: 1px solid var(--black); /* Un trait noir fin au-dessus du bloc : épaisseur (1px), style (solid = trait plein), couleur. */
+
+    margin-top: 12px; /* 12 pixels d'espace extérieur entre l'image et le trait. */
+
+}
+
+.artwork-info h3 { /* Le titre h3 dans le bloc d'informations. */
+
+    font-size: 25px; /* Taille du titre de l'œuvre. */
+
+    font-weight: 400; /* Poids normal (un h3 est en gras par défaut). */
+
+}
+
+.artwork-info p { /* Les paragraphes dans le bloc d'informations. */
+
+    color: var(--gray); /* Texte gris. */
+
+    font-size: 13px; /* Petit texte. */
+
+}
+
+.artwork-info > span { /* Le symbole > signifie « enfant direct » : seuls les <span> placés directement dans .artwork-info sont concernés, pas ceux qui seraient plus profond. */
+
+    color: var(--gray); /* Texte gris. */
+
+    font-size: 13px; /* Petit texte. */
+
+}
+```
