@@ -135,3 +135,150 @@ a { /* La balise a représente les liens. Par défaut, ils sont bleus et soulign
 
 }
 ```
+.hero { /* Le hero est la grande zone d'accueil : la première chose que l'on voit en arrivant sur la page. */
+
+    min-height: 100vh; /* Hauteur minimale de la section. vh = « viewport height » (hauteur de la fenêtre). 100vh = 100 % de la hauteur de l'écran : le hero remplit au moins tout l'écran. */
+
+    padding:
+        150px /* Haut : espace pour laisser de la place à la navbar, qui flotte par-dessus. */
+        6% /* Gauche et droite : 6 % de la largeur. */
+        80px; /* Bas : 80 pixels. Avec trois valeurs : haut, côtés, bas. */
+
+    display: grid; /* CSS Grid : un système de mise en page en colonnes et en lignes, comme un tableau. S'applique au parent : ses enfants directs se placent dans les cases de la grille. */
+
+    grid-template-columns:
+        1fr /* Première colonne : 1 part de l'espace disponible. fr = « fraction ». */
+        0.85fr; /* Deuxième colonne : 0,85 part, donc un peu plus étroite que la première. */
+
+    gap: 80px; /* Espace de 80 pixels entre les deux colonnes. */
+
+    align-items: center; /* Centre le contenu verticalement dans chaque case de la grille. */
+
+}
+
+
+.hero-content { /* Le bloc de texte du hero (colonne de gauche). */
+
+    max-width: 650px; /* Largeur maximale : le bloc ne dépasse jamais 650 pixels, même sur un très grand écran. */
+
+}
+
+
+.small-label { /* La petite étiquette placée au-dessus du titre. */
+
+    color: var(--red); /* Texte rouge, avec la variable définie dans :root. */
+
+    font-size: 12px; /* Très petit texte. */
+
+    letter-spacing: 2px; /* Espace les lettres pour un style aéré. */
+
+    text-transform: uppercase; /* Affiche le texte en majuscules. */
+
+    margin-bottom: 30px; /* Marge extérieure : 30 pixels d'espace sous l'étiquette. */
+
+}
+
+
+.hero h1 { /* Le grand titre, uniquement celui qui se trouve dans .hero. */
+
+    font-size:
+        clamp( /* clamp(minimum, idéal, maximum) : une taille adaptative qui ne sort jamais des limites. */
+            65px, /* Minimum : le titre ne descend pas sous 65 pixels. */
+            8vw, /* Idéal : 8 % de la largeur de la fenêtre. vw = « viewport width ». Le titre grandit avec l'écran. */
+            125px /* Maximum : le titre ne dépasse pas 125 pixels. */
+        );
+
+    line-height: 0.88; /* Interligne très serré : 0,88 fois la taille de la police. */
+
+    font-weight: 400; /* Poids de police « normal ». Par défaut, un h1 est en gras. */
+
+    letter-spacing: -5px; /* Rapproche fortement les lettres, pour un effet de grand titre élégant. */
+
+    margin-bottom: 40px; /* 40 pixels d'espace sous le titre. */
+
+}
+
+
+.hero h1 em { /* Les mots en <em> à l'intérieur du titre du hero. */
+
+    color: var(--red); /* Le mot mis en valeur devient rouge. */
+
+}
+
+
+.hero-description { /* Le paragraphe de présentation sous le titre. */
+
+    max-width: 500px; /* Limite la largeur pour éviter des lignes de texte trop longues, plus difficiles à lire. */
+
+    color: var(--gray); /* Texte gris, moins marqué que le titre. */
+
+    font-size: 17px; /* Taille légèrement plus grande qu'un texte standard. */
+
+    margin-bottom: 40px; /* 40 pixels d'espace sous le paragraphe. */
+
+}
+
+
+.button { /* Le bouton (ou lien) d'action. */
+
+    display: inline-flex; /* Comme flex, mais « en ligne » : le bouton ne prend que la largeur de son contenu, au lieu de remplir toute la ligne. */
+
+    align-items: center; /* Centre verticalement le texte et la flèche. */
+
+    gap: 25px; /* Espace de 25 pixels entre le texte et la flèche. */
+
+    padding: 15px 20px; /* Espace intérieur : 15px en haut et en bas, 20px à gauche et à droite. */
+
+    border-bottom: 1px solid var(--black); /* Un seul trait sous le bouton. Une bordure se décrit avec : épaisseur (1px), style (solid = trait plein) et couleur. */
+
+    font-size: 13px; /* Petite taille de texte. */
+
+    text-transform: uppercase; /* Texte en majuscules. */
+
+    letter-spacing: 1px; /* Lettres légèrement espacées. */
+
+}
+
+
+.button span { /* Le <span> à l'intérieur du bouton (probablement la flèche). */
+
+    font-size: 20px; /* Agrandit la flèche par rapport au texte du bouton. */
+
+}
+
+
+.hero-image { /* Le bloc de l'image (colonne de droite). */
+
+    position: relative; /* L'élément reste à sa place, mais devient un point de repère pour d'éventuels éléments positionnés en absolute à l'intérieur. */
+
+}
+
+
+.hero-image img { /* L'image située dans .hero-image. */
+
+    width: 100%; /* L'image prend toute la largeur de son conteneur. */
+
+    height: 680px; /* Hauteur fixe de 680 pixels. */
+
+    object-fit: cover; /* L'image remplit toute la zone sans se déformer : elle est recadrée si nécessaire, comme un fond d'écran. Sans cela, elle serait étirée. */
+
+    display: block; /* Transforme l'image en bloc. Par défaut, une image se comporte comme du texte et un petit espace parasite apparaît en dessous. Cette ligne le supprime. */
+
+}
+
+
+.hero-caption { /* La légende sous l'image. */
+
+    display: flex; /* Aligne les textes de la légende côte à côte. */
+
+    justify-content: space-between; /* Un texte tout à gauche, l'autre tout à droite. */
+
+    padding-top: 12px; /* 12 pixels d'espace entre l'image et la légende. */
+
+    font-size: 11px; /* Très petit texte. */
+
+    text-transform: uppercase; /* Majuscules. */
+
+    letter-spacing: 1px; /* Lettres légèrement espacées. */
+
+    color: var(--gray); /* Texte gris. */
