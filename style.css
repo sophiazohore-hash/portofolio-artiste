@@ -586,3 +586,71 @@ a { /* La balise a représente les liens. Par défaut, ils sont bleus et soulign
 
 }
 ```
+.studio { /* La section Studio (class="studio"). */
+
+    background: var(--black); /* Fond noir (variable --black). */
+
+    color: var(--white); /* Texte blanc cassé. Associé au fond noir, cela inverse les couleurs de la page et crée un fort contraste avec les sections voisines. Les éléments à l'intérieur héritent de cette couleur. */
+
+    padding: 120px 8%; /* Espace intérieur : 120px en haut et en bas, 8% à gauche et à droite. */
+
+    display: grid; /* CSS Grid : l'image et le texte se placent dans des colonnes. */
+
+    grid-template-columns:
+        1fr /* Première colonne (l'image) : 1 part de l'espace disponible. */
+        1fr; /* Deuxième colonne (le texte) : 1 part aussi. Deux valeurs identiques = deux colonnes de même largeur. */
+
+    gap: 100px; /* Espace de 100 pixels entre les deux colonnes. */
+
+    align-items: center; /* Centre verticalement l'image et le texte dans leurs cases. */
+
+}
+
+
+.studio-image img { /* L'image située dans .studio-image. */
+
+    width: 100%; /* L'image prend toute la largeur de sa colonne. */
+
+    height: 650px; /* Hauteur fixe de 650 pixels. */
+
+    object-fit: cover; /* L'image remplit la zone sans se déformer : elle est recadrée si nécessaire. */
+
+}
+
+
+.studio-text h2 { /* Le titre h2 situé dans .studio-text. */
+
+    font-size:
+        clamp( /* Taille adaptative qui suit la largeur de l'écran, entre deux limites. */
+            50px, /* Minimum : jamais moins de 50 pixels. */
+            6vw, /* Idéal : 6 % de la largeur de la fenêtre (vw = « viewport width »). */
+            90px /* Maximum : jamais plus de 90 pixels. */
+        );
+
+    line-height: 0.95; /* Interligne serré : un peu moins que la taille de la police. */
+
+    font-weight: 400; /* Poids normal (un h2 est en gras par défaut). */
+
+    margin: 35px 0; /* Marge extérieure avec deux valeurs : 35px en haut et en bas, 0 à gauche et à droite. */
+
+}
+
+
+.studio-text h2 em { /* Les mots en <em> à l'intérieur de ce titre. */
+
+    color: #d07855; /* Orange-rouge clair, écrit directement en hexadécimal. Il est plus lisible sur fond noir que le rouge foncé (--red) utilisé ailleurs. */
+
+}
+
+
+.studio-text p { /* Les paragraphes situés dans .studio-text. */
+
+    max-width: 500px; /* Limite la largeur du texte pour garder des lignes faciles à lire. */
+
+    color: #aaa; /* Gris clair : moins agressif que le blanc pur sur un fond noir. */
+
+    margin-bottom: 20px; /* 20 pixels d'espace sous chaque paragraphe. */
+
+    font-size: 17px; /* Taille de texte légèrement plus grande que la normale. */
+
+}
