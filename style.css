@@ -47,4 +47,91 @@ a { /* La balise a représente les liens. Par défaut, ils sont bleus et soulign
     color: inherit; /* inherit = « prends la même valeur que l'élément parent ». Le lien garde la couleur du texte qui l'entoure. */
 
     text-decoration: none; /* Supprime le soulignement par défaut des liens. */}
+```jsx
+.navbar { /* Le point (.) cible tous les éléments qui ont class="navbar" dans le HTML. */
 
+    position: absolute; /* Sort la barre du flux normal : elle flotte par-dessus le début de la page et les éléments suivants ne tiennent plus compte d'elle. */
+
+    top: 0; /* Colle la barre tout en haut. */
+    left: 0; /* Colle la barre tout à gauche. */
+
+    width: 100%; /* La barre prend toute la largeur de la page. % = pourcentage de la largeur du parent. */
+
+    padding: 30px 6%; /* Espace intérieur. Deux valeurs : 30px en haut et en bas, 6% à gauche et à droite. px = pixel, une unité fixe. */
+
+    display: flex; /* Flexbox : un système pour aligner des éléments côte à côte. S'applique au parent, ses enfants directs (logo et menu) se placent en ligne. */
+
+    justify-content: space-between; /* Répartit les enfants sur l'axe horizontal avec l'espace entre eux : le logo va tout à gauche, le menu tout à droite. */
+
+    align-items: center; /* Centre les enfants verticalement. */
+
+    z-index: 10; /* Gère l'empilement : plus le nombre est grand, plus l'élément passe devant les autres. La navbar reste visible au-dessus du contenu. */
+
+}
+
+.logo { /* Le logo du site (class="logo"). */
+
+    font-family:
+        Georgia, /* Police à empattements, comme les titres. */
+        serif; /* Solution de secours. */
+
+    font-size: 25px; /* Taille du texte : 25 pixels. */
+
+    font-weight: bold; /* Met le texte en gras. */
+
+    letter-spacing: -1px; /* Espace entre les lettres. Une valeur négative les rapproche. */
+
+}
+
+.logo span { /* L'espace entre deux sélecteurs signifie « à l'intérieur de » : tous les <span> qui se trouvent dans .logo. */
+
+    color: var(--red); /* Cette partie du logo devient rouge, grâce à la variable définie dans :root. */
+
+}
+
+.navbar nav { /* La balise <nav> (le menu) située à l'intérieur de .navbar. */
+
+    display: flex; /* Aligne les liens du menu côte à côte. */
+
+    gap: 35px; /* Espace de 35 pixels entre chaque lien. */
+
+}
+
+.navbar nav a { /* Les liens <a> situés dans le menu, à l'intérieur de .navbar. */
+
+    font-size: 13px; /* Petite taille de texte. */
+
+    text-transform: uppercase; /* Affiche le texte en majuscules, sans modifier le HTML. */
+
+    letter-spacing: 1px; /* Espace légèrement les lettres pour un style plus aéré. */
+
+    position: relative; /* Le lien reste à sa place, mais devient un point de repère pour les éléments en position absolute placés à l'intérieur (ici, la ligne ::after). */
+
+}
+
+.navbar nav a::after { /* ::after est un pseudo-élément : il crée un élément « virtuel » juste après le contenu du lien, sans toucher au HTML. Ici, il sert de ligne de soulignement. */
+
+    content: ""; /* Obligatoire pour qu'un pseudo-élément existe. Il est vide : on veut juste une ligne. */
+
+    position: absolute; /* Placé librement par rapport au lien (grâce au position: relative du lien). */
+
+    left: 0; /* Commence au bord gauche du lien. */
+
+    bottom: -6px; /* Se place 6 pixels sous le lien (valeur négative = vers l'extérieur). */
+
+    width: 0; /* Au départ, la ligne a une largeur nulle : elle est invisible. */
+
+    height: 1px; /* Épaisseur très fine : 1 pixel. */
+
+    background: var(--black); /* Couleur de la ligne : noir. */
+
+    transition: width 0.3s ease; /* Anime tout changement de largeur sur 0,3 seconde (s = seconde). ease = démarre doucement, accélère, puis ralentit. */
+
+}
+
+.navbar nav a:hover::after { /* :hover est une pseudo-classe : elle s'active quand la souris passe sur l'élément. Ici : quand on survole un lien, on modifie sa ligne ::after. */
+
+    width: 100%; /* La ligne passe à toute la largeur du lien. Grâce à la transition, elle se dessine progressivement de gauche à droite. */
+
+}
+```
