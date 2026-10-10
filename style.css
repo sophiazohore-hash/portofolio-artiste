@@ -869,3 +869,21 @@ a { /* La balise a représente les liens. Par défaut, ils sont bleus et soulign
     padding-bottom: 4px; /* 4 pixels d'espace entre le texte et le trait, pour qu'il ne soit pas collé aux lettres. */
 
 }
+footer { /* Ici, il n'y a ni point ni #, donc c'est un sélecteur de balise : il cible la balise HTML <footer> (le pied de page). */
+
+    padding: 25px 6%; /* Espace intérieur : 25px en haut et en bas, 6% à gauche et à droite. */
+
+    border-top: 1px solid #bbb; /* Un fin trait gris clair au-dessus du footer, pour le séparer du reste de la page. Une bordure se décrit avec : épaisseur (1px), style (solid = trait plein) et couleur. */
+
+    display: flex; /* Flexbox : les enfants directs du footer (les textes) se placent côte à côte. */
+
+    justify-content: space-between; /* Répartit les enfants sur l'axe horizontal avec l'espace entre eux : un texte tout à gauche, l'autre tout à droite. */
+
+    font-size: 11px; /* Très petit texte : 11 pixels. */
+
+    text-transform: uppercase; /* Affiche le texte en majuscules, sans modifier le HTML. */
+
+    letter-spacing: 1px; /* Espace légèrement les lettres pour un style plus aéré. */
+
+    color: var(--gray); /* Texte gris (variable --gray), discret, pour une information secondaire. */
+    }
