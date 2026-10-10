@@ -795,3 +795,77 @@ a { /* La balise a représente les liens. Par défaut, ils sont bleus et soulign
     letter-spacing: 2px; /* Espace légèrement les lettres. */
 
 }
+.contact { /* La section Contact (class="contact"). */
+
+    padding: 150px 8%; /* Espace intérieur : 150px en haut et en bas, 8% à gauche et à droite. */
+
+}
+
+
+.contact-content { /* Le conteneur qui regroupe le titre et les coordonnées. */
+
+    display: grid; /* CSS Grid : le titre et les coordonnées se placent dans deux colonnes. */
+
+    grid-template-columns:
+        1fr /* Première colonne (le titre) : 1 part de l'espace disponible. */
+        0.5fr; /* Deuxième colonne (les coordonnées) : 0,5 part, donc deux fois plus étroite que la première. */
+
+    gap: 100px; /* Espace de 100 pixels entre les deux colonnes. */
+
+    margin-top: 70px; /* 70 pixels d'espace au-dessus, pour séparer ce bloc du haut de la section. */
+
+}
+
+
+.contact h2 { /* Le titre h2 situé dans .contact. */
+
+    font-size:
+        clamp( /* Taille adaptative qui suit la largeur de l'écran, entre deux limites. */
+            60px, /* Minimum : jamais moins de 60 pixels. */
+            8vw, /* Idéal : 8 % de la largeur de la fenêtre (vw = « viewport width »). */
+            120px /* Maximum : jamais plus de 120 pixels. C'est le plus grand titre du site. */
+        );
+
+    line-height: 0.85; /* Interligne très serré : 0,85 fois la taille de la police. */
+
+    font-weight: 400; /* Poids normal (un h2 est en gras par défaut). */
+
+}
+
+
+.contact h2 em { /* Les mots en <em> à l'intérieur de ce titre. */
+
+    color: var(--red); /* Le mot mis en valeur devient rouge. */
+
+}
+
+
+.contact-details { /* Le bloc des coordonnées (colonne de droite). */
+
+    padding-top: 20px; /* 20 pixels d'espace intérieur au-dessus, pour descendre un peu le contenu et l'aligner visuellement avec le titre. */
+
+}
+
+
+.contact-details p { /* Les paragraphes situés dans .contact-details. */
+
+    color: var(--gray); /* Texte gris. */
+
+    margin-bottom: 40px; /* 40 pixels d'espace sous le paragraphe, pour le séparer des liens. */
+
+}
+
+
+.contact-details a { /* Les liens situés dans .contact-details (e-mail, réseaux, etc.). */
+
+    display: block; /* Par défaut, un lien est « en ligne » : il se place à la suite du texte. Avec block, chaque lien occupe sa propre ligne. */
+
+    width: fit-content; /* Corrige l'effet du block : le lien ne prend que la largeur de son contenu, au lieu de s'étaler sur toute la colonne. Le trait du dessous ne souligne donc que le texte. */
+
+    margin-bottom: 15px; /* 15 pixels d'espace sous chaque lien, pour les séparer. */
+
+    border-bottom: 1px solid #999; /* Un seul trait gris sous le lien. Une bordure se décrit avec : épaisseur (1px), style (solid = trait plein) et couleur. */
+
+    padding-bottom: 4px; /* 4 pixels d'espace entre le texte et le trait, pour qu'il ne soit pas collé aux lettres. */
+
+}
