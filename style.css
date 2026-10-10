@@ -365,3 +365,73 @@ a { /* La balise a représente les liens. Par défaut, ils sont bleus et soulign
     margin-bottom: 25px; /* 25 pixels d'espace sous chaque paragraphe, pour les séparer. */
 
 }
+.gallery { /* La section Galerie (class="gallery"). */
+
+    padding: 150px 8%; /* Espace intérieur : 150px en haut et en bas, 8% à gauche et à droite. */
+
+}
+
+
+.section-header { /* Le bloc d'en-tête de la section : il regroupe le numéro et le titre. */
+
+    margin-bottom: 100px; /* 100 pixels d'espace sous l'en-tête, pour bien le séparer du contenu de la galerie qui suit. */
+
+}
+
+
+.section-header .section-number { /* L'espace entre deux sélecteurs signifie « à l'intérieur de » : on cible uniquement le .section-number qui se trouve dans un .section-header. C'est plus précis que la simple classe de l'étape 7. */
+
+    margin-bottom: 30px; /* 30 pixels d'espace sous le numéro, pour le séparer du titre. Les autres propriétés (rouge, majuscules, etc.) viennent de la règle .section-number de l'étape 7. */
+
+}
+
+
+.section-header h2 { /* Le titre h2 situé dans .section-header. */
+
+    font-size:
+        clamp( /* Taille adaptative : elle suit la largeur de l'écran, mais reste entre deux limites. */
+            50px, /* Minimum : jamais moins de 50 pixels. */
+            7vw, /* Idéal : 7 % de la largeur de la fenêtre (vw = « viewport width »). */
+            100px /* Maximum : jamais plus de 100 pixels. */
+        );
+
+    line-height: 0.9; /* Interligne très serré : 0,9 fois la taille de la police. */
+
+    font-weight: 400; /* Poids normal (un h2 est en gras par défaut). */
+
+}
+.gallery { /* La section Galerie (class="gallery"). */
+
+    padding: 150px 8%; /* Espace intérieur : 150px en haut et en bas, 8% à gauche et à droite. */
+
+}
+
+
+.section-header { /* Le bloc d'en-tête de la section : il regroupe le numéro et le titre. */
+
+    margin-bottom: 100px; /* 100 pixels d'espace sous l'en-tête, pour bien le séparer du contenu de la galerie qui suit. */
+
+}
+
+
+.section-header .section-number { /* L'espace entre deux sélecteurs signifie « à l'intérieur de » : on cible uniquement le .section-number qui se trouve dans un .section-header. C'est plus précis que la simple classe de l'étape 7. */
+
+    margin-bottom: 30px; /* 30 pixels d'espace sous le numéro, pour le séparer du titre. Les autres propriétés (rouge, majuscules, etc.) viennent de la règle .section-number de l'étape 7. */
+
+}
+
+
+.section-header h2 { /* Le titre h2 situé dans .section-header. */
+
+    font-size:
+        clamp( /* Taille adaptative : elle suit la largeur de l'écran, mais reste entre deux limites. */
+            50px, /* Minimum : jamais moins de 50 pixels. */
+            7vw, /* Idéal : 7 % de la largeur de la fenêtre (vw = « viewport width »). */
+            100px /* Maximum : jamais plus de 100 pixels. */
+        );
+
+    line-height: 0.9; /* Interligne très serré : 0,9 fois la taille de la police. */
+
+    font-weight: 400; /* Poids normal (un h2 est en gras par défaut). */
+
+}
