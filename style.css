@@ -282,3 +282,14 @@ a { /* La balise a représente les liens. Par défaut, ils sont bleus et soulign
     letter-spacing: 1px; /* Lettres légèrement espacées. */
 
     color: var(--gray); /* Texte gris. */
+.section-number { /* Une classe réutilisable : on écrit le style une seule fois, puis on l'applique à plusieurs endroits du HTML avec class="section-number". */
+
+    font-size: 12px; /* Très petit texte : 12 pixels. */
+
+    text-transform: uppercase; /* Affiche le texte en majuscules, sans modifier le HTML. */
+
+    letter-spacing: 2px; /* Espace les lettres de 2 pixels pour un style plus aéré. */
+
+    color: var(--red); /* Texte rouge, grâce à la variable définie dans :root. Si on change --red, tous les numéros changent aussi. */
+
+}
