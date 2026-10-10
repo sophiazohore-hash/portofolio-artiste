@@ -836,26 +836,17 @@ a { /* La balise a représente les liens. Par défaut, ils sont bleus et soulign
 .contact h2 em { /* Les mots en <em> à l'intérieur de ce titre. */
 
     color: var(--red); /* Le mot mis en valeur devient rouge. */
-
 }
-
-
 .contact-details { /* Le bloc des coordonnées (colonne de droite). */
 
     padding-top: 20px; /* 20 pixels d'espace intérieur au-dessus, pour descendre un peu le contenu et l'aligner visuellement avec le titre. */
 
 }
-
-
 .contact-details p { /* Les paragraphes situés dans .contact-details. */
-
     color: var(--gray); /* Texte gris. */
 
     margin-bottom: 40px; /* 40 pixels d'espace sous le paragraphe, pour le séparer des liens. */
-
 }
-
-
 .contact-details a { /* Les liens situés dans .contact-details (e-mail, réseaux, etc.). */
 
     display: block; /* Par défaut, un lien est « en ligne » : il se place à la suite du texte. Avec block, chaque lien occupe sa propre ligne. */
@@ -887,3 +878,205 @@ footer { /* Ici, il n'y a ni point ni #, donc c'est un sélecteur de balise : il
 
     color: var(--gray); /* Texte gris (variable --gray), discret, pour une information secondaire. */
     }
+```jsx
+@media (max-width: 900px) { /* @media = media query : des règles qui ne s'appliquent que dans certaines conditions. Ici : seulement si la fenêtre fait 900 pixels de large ou moins (tablettes et petits écrans). C'est le principe du responsive design : la page s'adapte à la taille de l'écran. Ces règles viennent après les règles normales : en cas de conflit, elles les remplacent. */
+
+    .navbar { /* La barre de navigation. */
+
+        padding: 25px 5%; /* Réduit l'espace intérieur : 25px en haut et en bas, 5% à gauche et à droite. */
+
+    }
+
+    .navbar nav { /* Le menu. */
+
+        gap: 15px; /* Rapproche les liens : 15 pixels au lieu de 35. */
+
+    }
+
+    .navbar nav a { /* Les liens du menu. */
+
+        font-size: 10px; /* Texte plus petit pour que le menu tienne sur un écran moins large. */
+
+    }
+
+    .hero { /* La section d'accueil. */
+
+        grid-template-columns: 1fr; /* Une seule colonne au lieu de deux : le texte et l'image passent l'un sous l'autre. C'est le changement le plus courant en responsive. */
+
+        padding-top: 130px; /* Remplace uniquement le haut du padding (150px devient 130px). Les autres valeurs du padding ne changent pas. */
+
+    }
+
+    .hero-image { /* Le bloc de l'image du hero. */
+
+        margin-top: 30px; /* Ajoute 30 pixels d'espace au-dessus de l'image, maintenant placée sous le texte. */
+
+    }
+
+    .hero-image img { /* L'image du hero. */
+
+        height: 550px; /* Hauteur réduite : 550 pixels au lieu de 680. */
+
+    }
+
+    .about-content { /* Le conteneur de la section « À propos ». */
+
+        grid-template-columns: 1fr; /* Une seule colonne : l'image et le texte s'empilent. */
+
+        gap: 50px; /* Espace réduit entre eux : 50 pixels au lieu de 100. */
+
+    }
+
+    .about-image img { /* L'image de la section « À propos ». */
+
+        height: 500px; /* Hauteur réduite : 500 pixels au lieu de 600. */
+
+    }
+
+    .gallery-grid { /* La grille de la galerie. */
+
+        display: block; /* Supprime complètement la grille de 12 colonnes : les œuvres s'empilent simplement les unes sous les autres, comme des blocs normaux. Les propriétés grid-column n'ont alors plus d'effet. */
+
+    }
+
+    .artwork { /* Chaque œuvre de la galerie. */
+
+        margin-bottom: 70px; /* 70 pixels d'espace sous chaque œuvre. Il remplace le gap de la grille, qui n'existe plus. */
+
+    }
+
+    .artwork-small { /* La petite œuvre. */
+
+        margin-top: 0; /* Supprime le décalage de 150 pixels, devenu inutile en affichage empilé. */
+
+    }
+
+    .artwork img, /* La virgule regroupe plusieurs sélecteurs : la même règle s'applique aux trois. */
+    .artwork-small .image-container img,
+    .artwork-wide .image-container img {
+
+        height: 550px; /* Toutes les images de la galerie ont la même hauteur : 550 pixels. */
+
+    }
+
+    .studio { /* La section Studio. */
+
+        grid-template-columns: 1fr; /* Une seule colonne : l'image et le texte s'empilent. */
+
+        gap: 60px; /* Espace réduit entre eux : 60 pixels au lieu de 100. */
+
+    }
+
+    .studio-image img { /* L'image de la section Studio. */
+
+        height: 500px; /* Hauteur réduite : 500 pixels au lieu de 650. */
+
+    }
+
+    .contact-content { /* Le conteneur de la section Contact. */
+
+        grid-template-columns: 1fr; /* Une seule colonne : le titre puis les coordonnées. */
+
+        gap: 50px; /* Espace réduit entre eux : 50 pixels au lieu de 100. */
+
+    }
+
+}
+
+@media (max-width: 600px) { /* Une deuxième media query, pour les écrans de 600 pixels ou moins (téléphones). Elle s'ajoute à la précédente : un téléphone reçoit les règles de 900px ET celles de 600px. En cas de conflit, ces dernières gagnent, car elles viennent en dernier. */
+
+    .navbar nav { /* Le menu. */
+
+        display: none; /* Cache complètement le menu : l'élément disparaît de la page, comme s'il n'existait pas. Il n'y a plus assez de place pour les liens. */
+
+    }
+
+    .hero { /* La section d'accueil. */
+
+        padding-left: 6%; /* Remplace uniquement la valeur de gauche du padding. */
+
+        padding-right: 6%; /* Remplace uniquement la valeur de droite du padding. */
+
+    }
+
+    .hero h1 { /* Le grand titre du hero. */
+
+        font-size: 65px; /* Taille fixe de 65 pixels : elle remplace le clamp() utilisé sur grand écran. */
+
+        letter-spacing: -3px; /* Lettres moins serrées qu'avant (-3px au lieu de -5px), pour rester lisible sur petit écran. */
+
+    }
+
+    .hero-image img { /* L'image du hero. */
+
+        height: 450px; /* Hauteur encore réduite : 450 pixels. */
+
+    }
+
+    .about, /* Quatre sections regroupées avec des virgules : la même règle s'applique à toutes. */
+    .gallery,
+    .education,
+    .contact {
+
+        padding-top: 90px; /* Réduit l'espace en haut : 90 pixels au lieu de 140 ou 150. */
+
+        padding-bottom: 90px; /* Réduit l'espace en bas : 90 pixels. Les côtés (8%) ne changent pas. */
+
+    }
+
+    .about-image img { /* L'image de la section « À propos ». */
+
+        height: 400px; /* Hauteur réduite : 400 pixels. */
+
+    }
+
+    .artwork img, /* Les images de la galerie (mêmes sélecteurs regroupés que plus haut). */
+    .artwork-small .image-container img,
+    .artwork-wide .image-container img {
+
+        height: 420px; /* Hauteur réduite : 420 pixels pour toutes les images de la galerie. */
+
+    }
+
+    .studio { /* La section Studio. */
+
+        padding: 90px 6%; /* Espace intérieur réduit : 90px en haut et en bas, 6% à gauche et à droite. */
+
+    }
+
+    .studio-image img { /* L'image de la section Studio. */
+
+        height: 400px; /* Hauteur réduite : 400 pixels. */
+
+    }
+
+    .timeline-item { /* Une ligne de la timeline. */
+
+        grid-template-columns: 1fr; /* Une seule colonne : la date passe au-dessus du texte, au lieu d'être à gauche. */
+
+        gap: 10px; /* Espace réduit entre la date et le texte : 10 pixels. */
+
+    }
+
+    .statement { /* La section Citation. */
+
+        padding: 100px 6%; /* Espace intérieur réduit : 100px en haut et en bas, 6% à gauche et à droite. */
+
+    }
+
+    .statement blockquote { /* La citation. */
+
+        font-size: 42px; /* Taille fixe de 42 pixels : elle remplace le clamp() utilisé sur grand écran. */
+
+    }
+
+    footer { /* Le pied de page. */
+
+        flex-direction: column; /* Change la direction de l'axe flex. Par défaut, les éléments sont en ligne (row). Avec column, ils s'empilent verticalement. */
+
+        gap: 10px; /* 10 pixels d'espace entre les éléments empilés. */
+
+    }
+
+}
+```
