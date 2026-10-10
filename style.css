@@ -293,3 +293,75 @@ a { /* La balise a représente les liens. Par défaut, ils sont bleus et soulign
     color: var(--red); /* Texte rouge, grâce à la variable définie dans :root. Si on change --red, tous les numéros changent aussi. */
 
 }
+.about { /* La section « À propos » (class="about"). */
+
+    padding: 140px 8%; /* Espace intérieur : 140px en haut et en bas, 8% à gauche et à droite. */
+
+    background: var(--paper); /* Fond beige (variable --paper) pour distinguer cette section du reste de la page. */
+
+}
+
+
+.about-content { /* Le conteneur qui regroupe l'image et le texte. */
+
+    margin-top: 70px; /* Marge extérieure : 70 pixels d'espace au-dessus, pour séparer la grille du haut de la section. */
+
+    display: grid; /* CSS Grid : les enfants directs (l'image et le texte) se placent dans des colonnes. */
+
+    grid-template-columns:
+        0.8fr /* Colonne de gauche (l'image) : 0,8 part de l'espace disponible. fr = « fraction ». */
+        1.2fr; /* Colonne de droite (le texte) : 1,2 part, donc plus large que l'image. */
+
+    gap: 100px; /* Espace de 100 pixels entre les deux colonnes. */
+
+    align-items: center; /* Centre verticalement l'image et le texte dans leurs cases. */
+
+}
+
+
+.about-image img { /* L'image située dans .about-image. */
+
+    width: 100%; /* L'image prend toute la largeur de sa colonne. */
+
+    height: 600px; /* Hauteur fixe de 600 pixels. */
+
+    object-fit: cover; /* L'image remplit la zone sans se déformer : elle est recadrée si nécessaire. */
+
+}
+
+
+.about-text h2 { /* Le titre h2 situé dans .about-text. */
+
+    font-size:
+        clamp( /* Taille adaptative : elle suit la largeur de l'écran, mais reste entre deux limites. */
+            50px, /* Minimum : jamais moins de 50 pixels. */
+            6vw, /* Idéal : 6 % de la largeur de la fenêtre (vw = « viewport width »). */
+            90px /* Maximum : jamais plus de 90 pixels. */
+        );
+
+    line-height: 0.95; /* Interligne serré : un peu moins que la taille de la police. */
+
+    font-weight: 400; /* Poids normal (un h2 est en gras par défaut). */
+
+    margin-bottom: 50px; /* 50 pixels d'espace sous le titre. */
+
+}
+
+
+.about-text h2 em { /* Les mots en <em> à l'intérieur de ce titre. */
+
+    color: var(--red); /* Le mot mis en valeur devient rouge. */
+
+}
+
+.about-text p { /* Les paragraphes situés dans .about-text. */
+
+    max-width: 650px; /* Limite la largeur du texte pour garder des lignes faciles à lire. */
+
+    color: #555; /* Gris foncé écrit directement en hexadécimal (sans variable). */
+
+    font-size: 17px; /* Taille de texte légèrement plus grande que la normale. */
+
+    margin-bottom: 25px; /* 25 pixels d'espace sous chaque paragraphe, pour les séparer. */
+
+}
