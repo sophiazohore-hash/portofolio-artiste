@@ -654,3 +654,144 @@ a { /* La balise a représente les liens. Par défaut, ils sont bleus et soulign
     font-size: 17px; /* Taille de texte légèrement plus grande que la normale. */
 
 }
+.education { /* La section Parcours / Formation (class="education"). */
+
+    padding: 150px 8%; /* Espace intérieur : 150px en haut et en bas, 8% à gauche et à droite. */
+
+}
+
+
+.education > h2 { /* Le symbole > signifie « enfant direct » : seul le h2 placé directement dans .education est concerné, pas ceux qui seraient plus profond. */
+
+    font-size:
+        clamp( /* Taille adaptative qui suit la largeur de l'écran, entre deux limites. */
+            50px, /* Minimum : jamais moins de 50 pixels. */
+            6vw, /* Idéal : 6 % de la largeur de la fenêtre (vw = « viewport width »). */
+            90px /* Maximum : jamais plus de 90 pixels. */
+        );
+
+    font-weight: 400; /* Poids normal (un h2 est en gras par défaut). */
+
+    margin: 35px 0 100px; /* Marge extérieure avec trois valeurs : 35px en haut, 0 à gauche et à droite, 100px en bas. Le grand espace du bas sépare le titre de la timeline. */
+
+}
+
+
+.timeline { /* Le conteneur qui regroupe toutes les étapes du parcours. */
+
+    max-width: 1000px; /* Largeur maximale : la liste ne s'étire pas au-delà de 1000 pixels, même sur un grand écran. */
+
+}
+
+
+.timeline-item { /* Une ligne de la timeline (une date + une description). */
+
+    display: grid; /* CSS Grid : la date et le texte se placent dans deux colonnes. */
+
+    grid-template-columns:
+        200px /* Première colonne (la date) : largeur fixe de 200 pixels. */
+        1fr; /* Deuxième colonne (le texte) : prend tout l'espace restant. Mélanger une taille fixe et fr est très courant. */
+
+    gap: 50px; /* Espace de 50 pixels entre les deux colonnes. */
+
+    padding: 40px 0; /* Espace intérieur : 40px en haut et en bas, 0 à gauche et à droite. */
+
+    border-top: 1px solid #aaa; /* Un fin trait gris au-dessus de chaque ligne, pour séparer les étapes entre elles. */
+
+}
+
+
+.timeline-item > span { /* Les <span> placés directement dans .timeline-item (ici, la date). */
+
+    color: var(--red); /* Date en rouge, grâce à la variable définie dans :root. */
+
+    font-size: 13px; /* Petit texte. */
+
+}
+
+
+.timeline-item h3 { /* Le titre h3 de chaque étape. */
+
+    font-size: 30px; /* Taille du titre : 30 pixels. */
+
+    font-weight: 400; /* Poids normal (un h3 est en gras par défaut). */
+
+    margin-bottom: 5px; /* 5 pixels d'espace sous le titre. */
+
+}
+
+
+.timeline-item p { /* Les paragraphes de chaque étape. */
+
+    color: #555; /* Gris foncé, écrit directement en hexadécimal. */
+
+    margin-bottom: 10px; /* 10 pixels d'espace sous le paragraphe. */
+
+}
+
+
+.timeline-item small { /* La balise <small> sert à écrire un petit texte secondaire. */
+
+    color: var(--gray); /* Texte gris, pour une information moins importante. */}
+.statement { /* La section Citation (class="statement"). */
+
+    background: var(--red); /* Fond rouge (variable --red). */
+
+    color: var(--white); /* Texte blanc cassé. Les éléments à l'intérieur héritent de cette couleur. */
+
+    padding: 150px 8%; /* Espace intérieur : 150px en haut et en bas, 8% à gauche et à droite. */
+
+}
+
+
+.statement-content { /* Le bloc qui contient la citation. */
+
+    max-width: 1100px; /* Largeur maximale : le bloc ne dépasse pas 1100 pixels. */
+
+    margin: auto; /* Avec auto, le navigateur répartit l'espace restant à gauche et à droite de façon égale : le bloc est centré horizontalement. Cela ne fonctionne que si l'élément a une largeur limitée (ici, max-width). */
+
+    text-align: center; /* Centre le texte à l'intérieur du bloc. Ce n'est pas la même chose que centrer le bloc lui-même (c'est le rôle de margin: auto). */
+
+}
+
+
+.statement-content > span { /* Les <span> placés directement dans .statement-content (> = enfant direct). */
+
+    font-size: 11px; /* Très petit texte. */
+
+    letter-spacing: 3px; /* Espace fortement les lettres pour un style aéré. */
+
+}
+
+
+.statement blockquote { /* La balise <blockquote> est la balise HTML des citations. */
+
+    font-family:
+        Georgia, /* Police à empattements, élégante pour une citation. */
+        serif; /* Solution de secours : n'importe quelle police à empattements. */
+
+    font-size:
+        clamp( /* Taille adaptative qui suit la largeur de l'écran, entre deux limites. */
+            40px, /* Minimum : jamais moins de 40 pixels. */
+            6vw, /* Idéal : 6 % de la largeur de la fenêtre (vw = « viewport width »). */
+            80px /* Maximum : jamais plus de 80 pixels. */
+        );
+
+    line-height: 1; /* Interligne égal à la taille de la police : des lignes serrées, sans nombre d'unité. */
+
+    font-style: italic; /* Affiche la citation en italique. */
+
+    margin: 50px 0; /* Marge extérieure : 50px en haut et en bas, 0 à gauche et à droite. La citation est bien séparée des éléments autour. */
+
+}
+
+
+.statement p { /* Les paragraphes situés dans .statement (ici, probablement l'auteur de la citation). */
+
+    font-size: 13px; /* Petit texte. */
+
+    text-transform: uppercase; /* Affiche le texte en majuscules. */
+
+    letter-spacing: 2px; /* Espace légèrement les lettres. */
+
+}
